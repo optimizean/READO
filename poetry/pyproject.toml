@@ -5,6 +5,7 @@ build-backend = "poetry.core.masonry.api"
 [color]
 main = "green3"
 sub = "dark_slate_gray1"
+emp = "bold magenta"
 
 [tool.poetry]
 name = "optimizean"

@@ -45,9 +45,10 @@ def typing_effect(console: Console, chars: str, delay: float = 0.01):
     # color
     color_main = load_config()["color"]["main"]
     color_sub = load_config()["color"]["sub"]
+    color_emp = load_config()["color"]["emp"]
 
     for char in chars:
-        console.print(char, end="", style=color_main)
+        console.print(char, end="", style=None)
         time.sleep(delay)
     print()
 

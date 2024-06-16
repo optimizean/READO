@@ -17,7 +17,7 @@ def ask_requirements(console: Console) -> str:
 
     # Permission Message
     console.print(
-        f"\n[{color_main}]Following libraries are needed for awesome experience.[/]"
+        f"[{color_main}]Following libraries are needed for awesome experience.[/]"
     )
     console.print(
         f"[{color_main}]These are going to be uninstalled when it is dones[/]"
@@ -31,7 +31,7 @@ def ask_requirements(console: Console) -> str:
     console.print(f"[{color_main}]Proceed?[/]")
     options = ["Yes, Proceed. ", "No, Abort."]
     for i, option in enumerate(options, 1):
-        console.print(f"> {i}. {option}")
+        console.print(f"  > {i}. {option}")
 
     # Get User Input
     console.print()

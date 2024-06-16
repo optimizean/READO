@@ -22,23 +22,24 @@ $ pip install optimizean
 
 ### Before Installation
 <pre>
-Need to install the following packages.
-These will be uninstalled after every steps. 
+Following libraries are needed for awesome experience.
+These are going to be uninstalled when it is dones
+  - rich        : for colorful text in your terminal
+  - requests    : to check your visitor number
 
 Proceed?
+> 1. Yes, Proceed.
+> 2. No, Abort
 
-    rich: for rich text expression in terminal
-
-> yes
-> no
+Enter the number of your choice [1/2] (1):
 </pre>
 
 ### After Installation: Welcoming Process
 <pre>
 Verifying user credentials...
-Authentication successful. 
+Authentication successful.
 
-*sleep (2)*
+Welcome, User no.{user_id}
 </pre>
 
 <pre>
@@ -66,9 +67,9 @@ Authentication successful.
 
 
 # Todo's
-- [ ] Assign User ID Process
-- [ ] Proceeding Step (User Input in setup.py)
-- [ ] Intallation process (rich, pypistats)
+- [x] Assign User ID Process
+- [x] Proceeding Step (User Input in setup.py)
+- [x] Intallation process (rich, pypistats -> requests)
 - [ ] Welcoming Process
     - If possible
         - [ ] Detact Location

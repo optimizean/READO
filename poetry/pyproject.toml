@@ -16,6 +16,4 @@ license = "MIT"
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.6"
-rich = "*"
-requests = "*"
+python = "^3.8"

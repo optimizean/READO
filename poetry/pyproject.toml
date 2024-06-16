@@ -17,3 +17,6 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.8"
+
+[tool.poetry.scripts]
+optimizean = "setup:main"

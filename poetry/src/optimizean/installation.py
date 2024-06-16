@@ -25,25 +25,25 @@ def install_dependencies(console: Console):
     # color
     color_main = load_config()["color"]["main"]
     color_sub = load_config()["color"]["sub"]
+    color_emp = load_config()["color"]["emp"]
 
     if is_poetry_installed():
         console.print(
-            f"[bold {color_main}]Poetry is installed, installing dependencies with Poetry...[/]"
+            f"[bold {color_sub}]Poetry is installed, installing dependencies with Poetry...[/]"
         )
 
         try:
             subprocess.run(["poetry", "install"], check=True)
-            console.print(
-                f"[bold {color_main}]Dependencies installed successfully with Poetry![/]"
-            )
+            console.print()
+            console.print(f"> Dependencies installed successfully with Poetry!")
             status = True
         except subprocess.CalledProcessError as e:
             console.print(
-                f"[bold {color_main}]An error occurred while installing dependencies with Poetry: {e}[/]"
+                f"[bold {color_emp}]An error occurred while installing dependencies with Poetry: {e}[/]"
             )
     else:
         console.print(
-            f"[bold {color_main}]Poetry is not installed, installing dependencies with pip...[/]"
+            f"[bold {color_sub}]Poetry is not installed, installing dependencies with pip...[/]"
         )
 
         # Load the updated config to get the dependencies

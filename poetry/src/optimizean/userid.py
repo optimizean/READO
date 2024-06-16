@@ -29,7 +29,7 @@ def sum_downloads_in_180():
 
     # Set Config
     PACKAGE_NAME = config["tool"]["poetry"]["name"]
-    PACKAGE_NAME = "numpy"  #  tmp pkg name
+    # PACKAGE_NAME = "numpy"  #  tmp pkg name
     MIRROR_OR_NOT = "without_mirrors"
 
     # API Requests

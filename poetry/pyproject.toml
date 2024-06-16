@@ -1,0 +1,20 @@
+[build-system]
+requires = [ "poetry-core",]
+build-backend = "poetry.core.masonry.api"
+
+[color]
+main = "green3"
+sub = "dark_slate_gray1"
+
+[tool.poetry]
+name = "optimizean"
+version = "0.0.1"
+description = "Have questions? Take a moment to find out!"
+authors = [ "optimizean <optimize.an@gmail.com>",]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.6"
+rich = "*"
+requests = "*"

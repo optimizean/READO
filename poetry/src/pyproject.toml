@@ -8,8 +8,6 @@ version = "1.0.1"
 description = "Have questions? Take a moment to find out!"
 authors = [ "optimizean <optimize.an@gmail.com>",]
 license = "MIT"
-packages = [{include = "optimizean"}]
-include = ["pyproject.toml"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -22,8 +20,3 @@ pytest = "^8.2.2"
 
 [tool.poetry.scripts]
 optimizean = "optimizean.main:main"
-
-[custom.color]
-main = "green3"
-sub = "dark_slate_gray1"
-emp = "magenta"

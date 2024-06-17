@@ -1,7 +1,6 @@
 [build-system]
 requires = [ "poetry-core",]
 build-backend = "poetry.core.masonry.api"
-include = ["pyproject.toml"]
 
 [tool.poetry]
 name = "optimizean"
@@ -9,12 +8,14 @@ version = "1.0.1"
 description = "Have questions? Take a moment to find out!"
 authors = [ "optimizean <optimize.an@gmail.com>",]
 license = "MIT"
-readme = ""
+packages = [{include = "optimizean"}]
+include = ["pyproject.toml"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
 rich = "^13.7.1"
 requests = "^2.32.3"
+toml = "^0.10.2"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.2.2"

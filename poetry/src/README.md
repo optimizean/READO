@@ -1,11 +1,14 @@
 > This is a document for [RDD (Readme Driven Development)](https://tom.preston-werner.com/2010/08/23/readme-driven-development.html)
 
-![readoptimizean](https://github.com/optimizean/READO/assets/172540472/ca5f4b61-566a-4f8a-88c0-d8934455f722)
+![readopt](https://github.com/optimizean/READO/assets/172540472/fe0b3f31-d86d-46ed-bcb6-77174c46a425)
 
 ```bash
 $ pip install optimizean
+$ optimizean
 ```
 
+<details>
+<summary> The plan was </summary>
 
 # Table of Contents
 
@@ -70,20 +73,13 @@ Welcome, User no.{user_id}
 - [x] Assign User ID Process
 - [x] Proceeding Step (User Input in setup.py)
 - [x] Intallation process (rich, pypistats -> requests)
-- [ ] Welcoming Process
-    - If possible
-        - [ ] Detact Location
-        - [ ] Greetings acoording to the location
-    - Have to
-        - [ ] Contact link
-        - [ ] TOC Selection
-- [ ] Contents
-    - [ ] Section: What is this
-    - [ ] Section: Tech Stack
-    - [ ] Section: Features
-    - [ ] Section: References via github stats (if possible)
+- [x] Welcoming Process
+    - [x] Detact Location
+    - [x] Greetings acoording to the location
+    - [x] Contact link
+- [x] Contents
 
-
+</details>
 
 # 
 

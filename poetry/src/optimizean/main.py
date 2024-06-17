@@ -5,7 +5,7 @@ from rich.console import Console
 
 from optimizean.installation import install_dependencies
 from optimizean.userid import sum_downloads_in_180
-from optimizean.utils import clear_screen, load_config, typing_effect
+from optimizean.utils import clear_screen, typing_effect
 
 from optimizean.localization import get_local_greeting
 from optimizean.contents import display_contents, display_process

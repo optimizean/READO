@@ -26,6 +26,7 @@ class ProjectConfig:
     # description: str = meta["description"]
     # authors: list = meta["authors"]
     license: str = meta["license"]
+    dependencies: list = meta["dependencies"]
 
 
 @dataclass
@@ -38,7 +39,7 @@ class StyleConfig:
 @dataclass
 class Parameters:
     user: UserConfig = field(default_factory=UserConfig)
-    setup: ProjectConfig = field(default_factory=ProjectConfig)
+    project: ProjectConfig = field(default_factory=ProjectConfig)
     style: StyleConfig = field(default_factory=StyleConfig)
 
     def to_dict(self):
@@ -57,4 +58,4 @@ def main():
 
 if __name__ == "__main__":
     params = main()
-    # print(params.__repr__)
+    print(params.__repr__)

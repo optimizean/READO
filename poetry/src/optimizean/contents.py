@@ -10,7 +10,7 @@ from rich.table import Table
 from rich.align import Align
 from rich.layout import Layout
 
-from optimizean.utils import custom_color, load_config, clear_screen
+from optimizean.utils import custom_color
 
 color_main, color_sub, color_emp = custom_color()  # color
 

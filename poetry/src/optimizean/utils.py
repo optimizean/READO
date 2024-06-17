@@ -3,15 +3,11 @@
 from typing import Optional
 
 import os
-import sys
-
-# import re
-import toml  # import tomlib    # python v3.11
-
 import time
 import subprocess
-
 from rich.console import Console
+
+from optimizean.config import Parameters
 
 
 # Exception
@@ -29,36 +25,19 @@ def clear_screen(delay: float = 0.3):
         subprocess.call("clear", shell=True)
 
 
-# -- legacy -- #
-# read toml file - toml
-def load_config(PATH: str = "./pyproject.toml") -> dict:
-    with open(PATH, "r") as f:
-        config = toml.load(f)
-    return config
-
-
-# read toml file - tomlib
-# def load_config(PATH: str = "../pyproject.toml") -> dict:
-#     with open(PATH, "rb") as f:       # not 'r', open in 'rb' type
-#         config = tomllib.load(f)
-#     return config
-
-
-# -- unused -- #
-# write toml file
-# def write_config(TEXT: str, PATH: str = "../pyproject.toml") -> None:
-#     with open(PATH, "w") as f:
-#         toml.dump(TEXT, f)
-#         return f
+# Load a whole configuration data from pypi,
+# customized data from src/optimizean/config.py
+def load_config():
+    return Parameters()
 
 
 # manual function
 def custom_color():
     # color
     config = load_config()
-    color_main = config["custom"]["color"]["main"]
-    color_sub = config["custom"]["color"]["sub"]
-    color_emp = config["custom"]["color"]["emp"]
+    color_main = config.style.main
+    color_sub = config.style.sub
+    color_emp = config.style.emp
     return color_main, color_sub, color_emp
 
 

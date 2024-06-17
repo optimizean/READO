@@ -15,7 +15,7 @@ from src.optimizean.utils import (
 )  # write_config
 from src.optimizean.dependency import ask_requirements, set_requirements
 from src.optimizean.localization import greetings, get_location, get_local_greeting
-from optimizean.contents import contents, readme
+from src.optimizean.contents import contents, readme
 
 
 # -- unused -- #

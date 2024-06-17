@@ -2,10 +2,9 @@
 
 # PyPI Stats retains data for 180 days (https://pypistats.org/about)
 
-import toml
 import requests
 
-from src.optimizean.utils import BadRequestError, load_config
+from optimizean.utils import BadRequestError, load_config
 
 
 # Filter and Summation the number of downloads from parsing data

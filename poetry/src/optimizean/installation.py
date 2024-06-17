@@ -2,7 +2,7 @@
 
 import subprocess
 from rich.console import Console
-from src.optimizean.utils import clear_screen, load_config
+from optimizean.utils import clear_screen, load_config
 
 
 def is_poetry_installed():

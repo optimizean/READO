@@ -10,7 +10,7 @@ from rich.table import Table
 from rich.align import Align
 from rich.layout import Layout
 
-from src.optimizean.utils import load_config, clear_screen
+from optimizean.utils import load_config, clear_screen
 
 # color
 color_main = load_config()["color"]["main"]

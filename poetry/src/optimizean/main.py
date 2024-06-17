@@ -3,7 +3,7 @@
 import time
 from rich.console import Console
 
-from optimizean.installation import install_dependencies
+# from optimizean.installation import install_dependencies
 from optimizean.userid import sum_downloads_in_180
 from optimizean.utils import clear_screen, typing_effect
 
@@ -15,8 +15,8 @@ def load_userid() -> int:
     return sum_downloads_in_180()
 
 
-def installation_process(console: Console) -> bool:
-    return install_dependencies(console)
+# def installation_process(console: Console) -> bool:
+#     return install_dependencies(console)
 
 
 def veritifying_process(console: Console, user_id):

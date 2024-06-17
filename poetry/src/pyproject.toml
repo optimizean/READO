@@ -9,7 +9,7 @@ version = "1.0.1"
 description = "Have questions? Take a moment to find out!"
 authors = [ "optimizean <optimize.an@gmail.com>",]
 license = "MIT"
-readme = "README.md"
+readme = ""
 
 [tool.poetry.dependencies]
 python = "^3.8"

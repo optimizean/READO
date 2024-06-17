@@ -115,14 +115,18 @@ def load_config(PATH: str = "pyproject.toml") -> dict:
     return metadata
 
 
+# manual function
+def custom_color():
+    # color
+    config = load_config()
+    color_main = config["custom"]["color"]["main"]
+    color_sub = config["custom"]["color"]["sub"]
+    color_emp = config["custom"]["color"]["emp"]
+    return color_main, color_sub, color_emp
+
+
 # (rich) effect
 def typing_effect(console: Console, chars: str, delay: float = 0.01):
-
-    # color
-    color_main = load_config()["color"]["main"]
-    color_sub = load_config()["color"]["sub"]
-    color_emp = load_config()["color"]["emp"]
-
     for char in chars:
         console.print(char, end="", style=None)
         time.sleep(delay)

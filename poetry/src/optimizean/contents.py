@@ -10,12 +10,9 @@ from rich.table import Table
 from rich.align import Align
 from rich.layout import Layout
 
-from optimizean.utils import load_config, clear_screen
+from optimizean.utils import custom_color, load_config, clear_screen
 
-# color
-color_main = load_config()["color"]["main"]
-color_sub = load_config()["color"]["sub"]
-color_emp = load_config()["color"]["emp"]
+color_main, color_sub, color_emp = custom_color()  # color
 
 
 def contents_introduce(local_greeting_message: str) -> Text:
@@ -134,10 +131,6 @@ def display_contents(console: Console, local_greeting_message: str) -> Panel:
 
 
 def display_process(console: Console) -> None:
-
-    color_main = load_config()["color"]["main"]
-    color_sub = load_config()["color"]["sub"]
-    color_emp = load_config()["color"]["emp"]
 
     while True:
         choice = Prompt.ask(

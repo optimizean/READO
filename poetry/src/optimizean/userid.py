@@ -2,10 +2,9 @@
 
 # PyPI Stats retains data for 180 days (https://pypistats.org/about)
 
-import toml
 import requests
 
-from src.optimizean.utils import BadRequestError, load_config
+from optimizean.utils import BadRequestError, load_config
 
 
 # Filter and Summation the number of downloads from parsing data
@@ -25,10 +24,10 @@ def check_downloads_in_180(MIRROR_OR_NOT, response):
 # Parsing the number of downloads from pypistats
 def sum_downloads_in_180():
     # Load Metadata from toml
-    config: dict = load_config()
+    config = load_config()
 
     # Set Config
-    PACKAGE_NAME = config["tool"]["poetry"]["name"]
+    PACKAGE_NAME = config.project.name
     # PACKAGE_NAME = "numpy"  #  tmp pkg name
     MIRROR_OR_NOT = "without_mirrors"
 

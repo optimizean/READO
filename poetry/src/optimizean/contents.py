@@ -1,3 +1,4 @@
+# src/optimizean/contents.py
 import sys
 
 from rich.console import Console
@@ -5,44 +6,53 @@ from rich.panel import Panel
 from rich.text import Text
 from rich.prompt import Prompt
 from rich.syntax import Syntax
+from rich.table import Table
+from rich.align import Align
+from rich.layout import Layout
 
-from src.optimizean.utils import load_config, clear_screen
+from optimizean.utils import custom_color
 
-# color
-color_main = load_config()["color"]["main"]
-color_sub = load_config()["color"]["sub"]
-color_emp = load_config()["color"]["emp"]
+color_main, color_sub, color_emp = custom_color()  # color
 
 
-def contents(console: Console, local_greeting_message: str):
-    body = f"""
-    {local_greeting_message}, Human and Non-Human Visitor! 🤖   
+def contents_introduce(local_greeting_message: str) -> Text:
+    return f"""{local_greeting_message}, Human and Non-Human Visitor! 🤖
+This is a proactive Log Keeper and [{color_sub}]Computer Vision engineer, An[/]
+Believing greatest asset for developers is the trust and teamworks.
+As a [{color_sub}]research-oriented engineer[/], I strive to overcome challenges 
+utilize existing technologies and innovative ideas.
 
-    This is a self-taught Computer Vision engineer AN.  
-    Have a huge interest in what AI can do in a positive way.   
-    Looking for oppurtunities to collaborate with various individuals  
-    
-    Contact me 💻
+Always open to new collaborations!\n"""
 
-    Email   : optimize.an@gmail.com
-    Github  : https://github.com/optimizean
-    Blog    : https://optimizean.github.io/an/
+
+def contents_contact(title: str = "\nContact me 💻\n") -> Table:
+    f"""
+    e.g.,   Contact me 💻
+
+    [{color_main}]Email[/]   | email@gmail.com
+    [{color_main}]Github[/]  | github.com/username
+    [{color_main}]Blog[/]    | https://blog-address.com
     """
+    # Contact
+    contact = Table(
+        title=title,
+        expand=False,
+        style=None,
+        show_header=False,
+        show_edge=False,
+    )
+    contact.add_column("Method", justify="right")
+    contact.add_column("Contact", justify="left")
+    contact.add_row("Email", "https://github.com/optimizean")
+    contact.add_row("Github", "https://optimizean.github.io/an/")
+    contact.add_row("Blog", "optimize.an@gmail.com")
 
-    panel = Panel.fit(Text(body), title="", border_style=color_emp)
-
-    console.print()
-    console.print(panel)
-    console.print()
-    return body
+    return contact
 
 
-def code_contents(console: Console):
-    clear_screen()
-
+def code_contents(console: Console) -> Panel:
     code = """
 
-    
     #!/usr/bin/python
     # -*- coding: utf-8 -*-
 
@@ -53,9 +63,9 @@ def code_contents(console: Console):
             super(AN, self).__init__()
 
             # Role
-            self.educator   = Educator(driven   =   "sharing knowledge")
-            self.engineer   = Engineer(driven   =   "contributing to open-source project")
-            self.researcher = Researcher(driven =   "engaging with in-depth experience")
+            self.educator   = Educator(driven = "sharing knowledge")
+            self.engineer   = Engineer(driven = "contributing to open-source project")
+            self.researcher = Researcher(driven = "engaging with in-depth experience")
 
             # Currently Focus on
             self.document_understanding = Vision(especially = "table_comprehension")
@@ -67,38 +77,60 @@ def code_contents(console: Console):
         def forward(self, an):
         
             # Tech Stack
-            educating   = self.educator  (an, volunteering  =   ["Git", "GitHub/Actions", "Django"])
-            engineering = self.engineer  (an, prefer        =   ["PyTorch", "Huggingface", "Wandb"])
-            researching = self.researcher(an, experienced   =   ["LaTeX", "Linux", "Misc."])
+            educating   = self.educator(an, volunteering = ["Git", "GitHub/Actions", "Django"])
+            engineering = self.engineer(an, prefer = ["PyTorch", "Huggingface", "Wandb"])
+            researching = self.researcher(an, experienced = ["LaTeX", "Linux", "Misc."])
             
             inputs = torch.cat((educating, engineering, researching), 1)
 
             # at This Moment
-            doc_exp = self.document_understanding(inputs)
-            seg_exp = self.semantic_segmentation(inputs)
+            novice  = self.document_understanding(inputs)
+            interme = self.semantic_segmentation(inputs)
 
-            output = self.classifier((doc_exp, seg_exp))
+            output = self.classifier((novice, interm))
+
             return output
 
             
     hello_world = AN()    
 
-    
     """
 
     syntax = Syntax(code, "python", theme="github-dark", line_numbers=True)
+    # panel = Panel.fit(syntax)
+    panel = Panel(syntax, expand=True)
+    console.print(panel)
+    return panel
 
-    console.print()
-    console.print(syntax)
-    console.print()
-    return code
+
+def contents_farewell(console: Console) -> str:
+    farewell = f"""
+    Thank you for taking time!
+    Feel free to contact me. 👋 
+
+    >  https://github.com/optimizean
+    >  optimize.an@gmail.com
+    
+    """
+    console.print(farewell)
+    return farewell
 
 
-def readme(console: Console) -> None:
+def display_contents(console: Console, local_greeting_message: str) -> Panel:
+    introduce: str = contents_introduce(local_greeting_message)
+    contact: Table = contents_contact()
 
-    color_main = load_config()["color"]["main"]
-    color_sub = load_config()["color"]["sub"]
-    color_emp = load_config()["color"]["emp"]
+    grid = Table.grid(expand=True)
+    grid.add_row(introduce)
+    grid.add_row(contact)
+
+    panel = Panel(Align.center(grid, vertical="middle"), padding=2)
+    console.print(panel)
+
+    return panel
+
+
+def display_process(console: Console) -> None:
 
     while True:
         choice = Prompt.ask(
@@ -109,12 +141,6 @@ def readme(console: Console) -> None:
         if choice == "y":
             code_contents(console)
 
-        console.print()
-        console.print("  Thank you for taking time!")
-        console.print("  Feel free to contact me. 👋 ")
-        console.print()
-        console.print("  >  https://github.com/optimizean", style=color_emp)
-        console.print("  >  optimize.an@gmail.com", style=color_emp)
-        console.print()
+        contents_farewell(console)
 
         sys.exit()

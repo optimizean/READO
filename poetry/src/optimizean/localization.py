@@ -1,11 +1,12 @@
 import time
 import requests
 import warnings
+from typing import Optional, Tuple
 
 warnings.filterwarnings(action="ignore")
 
 
-def greetings():
+def get_localtime() -> str:
     current_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
     current_hour = int(current_time.split(" ")[-1].split(":")[0])
 
@@ -21,13 +22,13 @@ def greetings():
         raise ValueError("Wrong Time")
 
 
-def get_location():
+def get_location() -> Tuple[str, str]:
     response = requests.get("http://ip-api.com/json/")
     data = response.json()
     return data.get("country"), data.get("countryCode")
 
 
-def get_local_greeting(greeting, country_code):
+def get_local_greeting(localtime: str, country_code: str) -> str:
     greetings_dict = {
         "morning": {
             "AR": "صباح الخير",
@@ -87,14 +88,8 @@ def get_local_greeting(greeting, country_code):
         },
     }
 
-    local_greeting = greetings_dict.get(greeting, {}).get(country_code, "Hello")
-
-    return local_greeting
+    return greetings_dict.get(localtime, {}).get(country_code, "Hello")
 
 
 if __name__ == "__main__":
-    greeting = greetings()
-    country, country_code = get_location()
-    local_greeting = get_local_greeting(greeting, country_code)
-
-    print(local_greeting)
+    get_local_greeting()

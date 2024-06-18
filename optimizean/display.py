@@ -17,6 +17,7 @@ color_main, color_sub, color_emp = custom_color()  # color
 
 # -- Make Contents Rich -- #
 
+
 def rich_introduce(content: str) -> Text:
     content = Text.from_markup(content)
     return content
@@ -25,7 +26,7 @@ def rich_introduce(content: str) -> Text:
 def rich_contact(contents: dict) -> Table:
     # Contact
     contact = Table(
-        title=f"\n{contents.get("title")}\n",
+        title=f"\n{contents.get('title')}\n",
         expand=False,
         style=None,
         show_header=False,
@@ -60,11 +61,11 @@ def rich_proceed(content: str) -> str:
     )
     return choice
 
+
 # -- Displaying Module -- #
 
-def display_contents(
-    console: Console, introduce:Text, contact:Table
-) -> Panel:
+
+def display_contents(console: Console, introduce: Text, contact: Table) -> Panel:
 
     # Style
     grid = Table.grid(expand=True)
@@ -77,14 +78,12 @@ def display_contents(
     return panel
 
 
-
-
-def display_rich_contents(customize_location:bool) -> None:
+def display_rich_contents(customize_location: bool) -> None:
     console = Console()
     contents_dict: dict = contents(customize_location)
 
-    introduce_text:Text = rich_introduce(content=contents_dict.get("introduce"))
-    contact_table:Table = rich_contact(contents=contents_dict.get("contact"))
+    introduce_text: Text = rich_introduce(content=contents_dict.get("introduce"))
+    contact_table: Table = rich_contact(contents=contents_dict.get("contact"))
     display_contents(console, introduce_text, contact_table)
 
     while True:

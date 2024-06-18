@@ -91,7 +91,7 @@ def display_process(console: Console, contents: dict) -> None:
 
 
 def display_rich_contents(customize_location:bool) -> True:
-    console = Console
+    console = Console()
     contents_dict: dict = contents(customize_location)
 
     display_process(console, contents_dict)

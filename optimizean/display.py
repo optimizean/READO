@@ -17,7 +17,8 @@ color_main, color_sub, color_emp = custom_color()  # color
 
 
 def rich_introduce(content: str) -> Text:
-    return Text(content)
+    content = Text.from_markup(content)
+    return content
 
 
 def rich_contact(contents: dict) -> Table:
@@ -94,6 +95,13 @@ def display_rich_contents(customize_location:bool) -> True:
     console = Console()
     contents_dict: dict = contents(customize_location)
 
+    introduce_text:Text = rich_introduce(content=contents_dict.get("introduce"))
+    console.print(introduce_text)
+
+    contact_table:Table = rich_contact(contents=contents_dict.get("contact"))
+    console.print(contact_table)
+
+    # rich_code(console, contents_dict.get("code"))
     display_process(console, contents_dict)
 
     return True

@@ -30,6 +30,6 @@ optimizean = "optimizean.main:main"
 "Bug Tracker" = "https://github.com/optimizean/READO/issues"
 
 
-# For GitHub Actions PyTest
-[tool.pytest.ini_options]
-rootdir = "src"
+# # For GitHub Actions PyTest
+# [tool.pytest.ini_options]
+# rootdir = "src"

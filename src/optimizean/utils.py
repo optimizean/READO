@@ -7,7 +7,7 @@ import time
 import subprocess
 from rich.console import Console
 
-from optimizean.config import Parameters
+from src.optimizean.config import Parameters
 
 
 # Exception

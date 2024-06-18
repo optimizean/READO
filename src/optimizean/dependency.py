@@ -6,7 +6,7 @@ from typing import List, Union
 from rich.console import Console
 from rich.prompt import Prompt
 
-from optimizean.utils import load_config
+from src.optimizean.utils import load_config
 
 
 # -- Legacy -- #

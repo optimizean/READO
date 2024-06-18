@@ -3,8 +3,6 @@ import requests
 import warnings
 from typing import Optional, Tuple
 
-warnings.filterwarnings(action="ignore")
-
 
 def get_localtime() -> str:
     current_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())

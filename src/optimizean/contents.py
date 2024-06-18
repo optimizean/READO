@@ -4,9 +4,9 @@
 Only the Content will be placed here
 """
 
-from src.optimizean.config import Parameters
-from src.optimizean.utils import custom_color
-from src.optimizean.localization import local_greeting
+from optimizean.config import Parameters
+from optimizean.utils import custom_color
+from optimizean.localization import local_greeting
 
 # config = Parameters()
 color_main, color_sub, color_emp = custom_color()  # color

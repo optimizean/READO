@@ -4,11 +4,11 @@ import time
 from rich.console import Console
 
 # from optimizean.installation import install_dependencies
-from src.optimizean.userid import sum_downloads_in_180
-from src.optimizean.utils import clear_screen, typing_effect
+from optimizean.userid import sum_downloads_in_180
+from optimizean.utils import clear_screen, typing_effect
 
-from src.optimizean.localization import get_local_greeting
-from src.optimizean.display import display_rich_contents
+from optimizean.localization import get_local_greeting
+from optimizean.display import display_rich_contents
 
 
 def load_userid() -> int:

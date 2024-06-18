@@ -3,10 +3,10 @@
 # Testing tool
 import pytest
 from optimizean.config import Parameters
-from src.optimizean.localization import local_greeting
+from optimizean.localization import local_greeting
 
 # Testing target
-from src.optimizean.contents import introduce, contact, code, farewell, proceed
+from optimizean.contents import introduce, contact, code, farewell, proceed
 
 
 # -- Utils -- #

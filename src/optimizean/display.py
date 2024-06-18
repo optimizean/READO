@@ -9,8 +9,8 @@ from rich.syntax import Syntax
 from rich.table import Table
 from rich.align import Align
 
-from src.optimizean.utils import custom_color
-from src.optimizean.contents import contents
+from optimizean.utils import custom_color
+from optimizean.contents import contents
 
 color_main, color_sub, color_emp = custom_color()  # color
 

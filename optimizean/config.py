@@ -1,15 +1,22 @@
 import os
 import sys
-from importlib.metadata import metadata  # >= 3.8
+from importlib.metadata import (
+    metadata,
+    version,
+    requires,
+)  # >= 3.8
 from dataclasses import dataclass, field, fields
 
 
+# -- Load Metadata -- #
 def get_metadata(package_name="optimizean"):
     meta = metadata(package_name)
     return meta
 
 
 meta = get_metadata()
+
+# -- Metadata Dataclass -- #
 
 
 @dataclass
@@ -21,12 +28,10 @@ class UserConfig:
 
 @dataclass
 class ProjectConfig:
-    name: str = meta["name"]
-    version: str = meta["version"]
-    # description: str = meta["description"]
-    # authors: list = meta["authors"]
-    license: str = meta["license"]
-    dependencies: list = meta["dependencies"]
+    name: str = meta.get("name", "unknown")
+    version: str = meta.get("version", version("optimizean"))
+    license: str = meta.get("license", "unknown")
+    dependencies: list = field(default_factory=lambda: requires("optimizean"))
 
 
 @dataclass

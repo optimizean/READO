@@ -1,59 +1,38 @@
-# src/optimizean/contents.py
-import sys
+# src/optimizean/content.py
 
-from rich.console import Console
-from rich.panel import Panel
-from rich.text import Text
-from rich.prompt import Prompt
-from rich.syntax import Syntax
-from rich.table import Table
-from rich.align import Align
-from rich.layout import Layout
+"""
+Only the Content will be placed here
+"""
 
+from optimizean.config import Parameters
 from optimizean.utils import custom_color
+from optimizean.localization import local_greeting
 
+# config = Parameters()
 color_main, color_sub, color_emp = custom_color()  # color
 
 
-def contents_introduce(local_greeting_message: str) -> Text:
+def introduce(local_greeting_message: str = "Welcome") -> str:
     return f"""{local_greeting_message}, Human and Non-Human Visitor! 🤖
 This is a proactive Log Keeper and [{color_sub}]Computer Vision engineer, An.[/]
 Believing greatest asset for developers is the trust and teamworks.
 As a [{color_sub}]research-oriented engineer[/], I strive to overcome challenges 
 utilize existing technologies and innovative ideas.
 
-Always open to new collaborations!\n"""
+Always open to new collaborations!"""
 
 
-def contents_contact() -> Table:
-    f"""
-    e.g.,   Contact me 💻
-
-    [{color_main}]Email[/]   | email@gmail.com
-    [{color_main}]Github[/]  | github.com/username
-    [{color_main}]Blog[/]    | https://blog-address.com
-    """
-    # Contact
-    contact = Table(
-        title="\nContact me 💻\n",
-        expand=False,
-        style=None,
-        show_header=False,
-        show_edge=False,
-    )
-    contact.add_column("Method", justify="right")
-    contact.add_column("Contact", justify="left")
-    contact.add_row("Email", "https://github.com/optimizean")
-    contact.add_row("Github", "https://optimizean.github.io/an/")
-    contact.add_row("Blog", "optimize.an@gmail.com")
-
+def contact(config: dict) -> dict:
+    contact = dict()
+    contact["title"] = "Contact me 💻"
+    contact["email"] = config.author.email
+    contact["github"] = config.author.github
+    contact["blog"] = config.author.blog
     return contact
 
 
-def code_contents(console: Console) -> Panel:
-    code = """
-
-    #!/usr/bin/python
+def code() -> str:
+    return """
     # -*- coding: utf-8 -*-
 
     from an import Educator, Engineer, Researcher, Vision
@@ -93,67 +72,39 @@ def code_contents(console: Console) -> Panel:
 
             
     hello_world = AN()    
-
     """
 
-    syntax = Syntax(code, "python", theme="github-dark", line_numbers=True)
-    # panel = Panel.fit(syntax)
-    panel = Panel(syntax, expand=True)
-    console.print(panel)
-    return panel
+
+def farewell(config: dict) -> str:
+    return f"""
+Thank you for having your time!
+Feel free to contact me 👋 
+
+>  Github:  {config.author.github}
+>  Email:   {config.author.email}
+"""
 
 
-def contents_farewell(console: Console) -> str:
-    farewell = f"""
-    Thank you for taking time!
-    Feel free to contact me 👋 
-
-    >  Github:  https://github.com/optimizean
-    >  Email:   optimize.an@gmail.com
-    
-    """
-    console.print(farewell)
-    return farewell
+def proceed() -> str:
+    return f"""
+[{color_sub}]🔒 New Feature is Released! Why don't you try? [/]
+It won't install any other package.
+"""
 
 
-def ask_next() -> str:
-    query = f"""[{color_sub}]🔒 New Feature is Released! Why don't you try? [/]\n It won't install any other package."""
-    choice = Prompt.ask(
-        query,
-        choices=["y", "n"],
-        default="y",
-    )
-    return choice
+def contents(customize_location: bool) -> dict:
+    config = Parameters()
+    contents_dict = dict()
+    greeting = local_greeting(customize_location)  # optimizean/localization
 
-
-def display_contents(console: Console, local_greeting_message: str) -> Panel:
-    introduce: str = contents_introduce(local_greeting_message)
-    contact: Table = contents_contact()
-
-    grid = Table.grid(expand=True)
-    grid.add_row(introduce)
-    grid.add_row(contact)
-
-    panel = Panel(Align.center(grid, vertical="middle"), padding=2)
-    console.print(panel)
-
-    return panel
-
-
-def display_process(console: Console) -> None:
-
-    while True:
-        choice = ask_next()
-        if choice == "y":
-            code_contents(console)
-
-        contents_farewell(console)
-
-        sys.exit()
+    # combine
+    contents_dict["introduce"] = introduce(greeting)
+    contents_dict["contact"] = contact(config)  # title, email, github, blog
+    contents_dict["code"] = code()
+    contents_dict["farewell"] = farewell(config)
+    contents_dict["proceed"] = proceed()
+    return contents_dict
 
 
 if __name__ == "__main__":
-    color_main, color_sub, color_emp = custom_color()  # color
-
-    console = Console
-    display_process()
+    print(contents())

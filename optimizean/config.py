@@ -41,11 +41,19 @@ class StyleConfig:
     emp: str = "magenta"
 
 
+class AuthorConfig:
+    name: str = "optimizean"
+    github: str = "https://github.com/optimizean"
+    blog: str = "https://optimizean.github.io/an/"
+    email: str = "optimize.an@gmail.com"
+
+
 @dataclass
 class Parameters:
     user: UserConfig = field(default_factory=UserConfig)
     project: ProjectConfig = field(default_factory=ProjectConfig)
     style: StyleConfig = field(default_factory=StyleConfig)
+    author: AuthorConfig = field(default_factory=AuthorConfig)
 
     def to_dict(self):
         return self.__dict__
@@ -57,10 +65,10 @@ class Parameters:
 
 
 def main():
-    params = Parameters()
-    return params
+    config = Parameters()
+    return config
 
 
 if __name__ == "__main__":
-    params = main()
-    print(params.__repr__)
+    config = main()
+    print(config.__repr__)

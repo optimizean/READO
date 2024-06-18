@@ -5,18 +5,27 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry]
 name = "optimizean"
 version = "1.1.0"
-description = "Have questions? Take a moment to find out!"
-authors = [ "optimizean <optimize.an@gmail.com>",]
+description = "Have any questions? Take a moment to find out!"
 license = "MIT"
+authors = [ "optimizean <optimize.an@gmail.com>",]
+maintainers = [ "optimizean <optimize.an@gmail.com>",]
+readme = "README.md"
+homepage = "https://github.com/optimizean/READO"
+repository = "https://github.com/optimizean/READO"
+keywords = ["hello world", "python", "profile", "readme",]
+
 
 [tool.poetry.dependencies]
 python = "^3.8"
 rich = "^13.7.1"
 requests = "^2.32.3"
-toml = "^0.10.2"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.2.2"
 
 [tool.poetry.scripts]
 optimizean = "optimizean.main:main"
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/optimizean/READO/issues"
+

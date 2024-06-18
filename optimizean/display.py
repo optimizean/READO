@@ -8,13 +8,14 @@ from rich.prompt import Prompt
 from rich.syntax import Syntax
 from rich.table import Table
 from rich.align import Align
-from rich.layout import Layout
 
 from optimizean.utils import custom_color
 from optimizean.contents import contents
 
 color_main, color_sub, color_emp = custom_color()  # color
 
+
+# -- Make Contents Rich -- #
 
 def rich_introduce(content: str) -> Text:
     content = Text.from_markup(content)
@@ -39,15 +40,14 @@ def rich_contact(contents: dict) -> Table:
     return contact
 
 
-def rich_code(console: Console, content: str) -> Panel:
+def rich_code(content: str) -> Panel:
     code = content
     syntax = Syntax(code, "python", theme="github-dark", line_numbers=True)
     panel = Panel(syntax, expand=True)
-    console.print(panel)
     return panel
 
 
-def rich_farewell(console: Console, content: str) -> str:
+def rich_farewell(content: str) -> Text:
     return Text(content)
 
 
@@ -60,14 +60,11 @@ def rich_proceed(content: str) -> str:
     )
     return choice
 
+# -- Displaying Module -- #
 
 def display_contents(
-    console: Console, contents: dict, local_greeting_message: str
+    console: Console, introduce:Text, contact:Table
 ) -> Panel:
-
-    # Contents
-    introduce: Text = contents.get(introduce(local_greeting_message))
-    contact: Table = rich_contact(contents.get("contact"))
 
     # Style
     grid = Table.grid(expand=True)
@@ -80,31 +77,23 @@ def display_contents(
     return panel
 
 
-def display_process(console: Console, contents: dict) -> None:
-
-    while True:
-        choice = contents.get("proceed")
-        if choice == "y":
-            rich_code(console, contents.get("code"))
-
-        rich_farewell(console, contents.get("farewell"))
-        sys.exit()
 
 
-def display_rich_contents(customize_location:bool) -> True:
+def display_rich_contents(customize_location:bool) -> None:
     console = Console()
     contents_dict: dict = contents(customize_location)
 
     introduce_text:Text = rich_introduce(content=contents_dict.get("introduce"))
-    console.print(introduce_text)
-
     contact_table:Table = rich_contact(contents=contents_dict.get("contact"))
-    console.print(contact_table)
+    display_contents(console, introduce_text, contact_table)
 
-    # rich_code(console, contents_dict.get("code"))
-    display_process(console, contents_dict)
+    while True:
+        choice = rich_proceed(contents_dict.get("proceed"))
+        if choice == "y":
+            console.print(rich_code(contents_dict.get("code")))
 
-    return True
+        console.print(rich_farewell(contents_dict.get("farewell")))
+        sys.exit()
 
 
 if __name__ == "__main__":

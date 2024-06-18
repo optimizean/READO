@@ -86,10 +86,7 @@ Feel free to contact me 👋
 
 
 def proceed() -> str:
-    return f"""
-[{color_sub}]🔒 New Feature is Released! Why don't you try? [/]
-It won't install any other package.
-"""
+    return f"""[{color_sub}]🔒 New Feature is Released! Why don't you try?[/]  (It won't install any other package.)"""
 
 
 def contents(customize_location: bool) -> dict:

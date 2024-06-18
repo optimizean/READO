@@ -17,7 +17,7 @@ color_main, color_sub, color_emp = custom_color()  # color
 
 def contents_introduce(local_greeting_message: str) -> Text:
     return f"""{local_greeting_message}, Human and Non-Human Visitor! 🤖
-This is a proactive Log Keeper and [{color_sub}]Computer Vision engineer, An[/]
+This is a proactive Log Keeper and [{color_sub}]Computer Vision engineer, An.[/]
 Believing greatest asset for developers is the trust and teamworks.
 As a [{color_sub}]research-oriented engineer[/], I strive to overcome challenges 
 utilize existing technologies and innovative ideas.
@@ -25,7 +25,7 @@ utilize existing technologies and innovative ideas.
 Always open to new collaborations!\n"""
 
 
-def contents_contact(title: str = "\nContact me 💻\n") -> Table:
+def contents_contact() -> Table:
     f"""
     e.g.,   Contact me 💻
 
@@ -35,7 +35,7 @@ def contents_contact(title: str = "\nContact me 💻\n") -> Table:
     """
     # Contact
     contact = Table(
-        title=title,
+        title="\nContact me 💻\n",
         expand=False,
         style=None,
         show_header=False,
@@ -106,14 +106,24 @@ def code_contents(console: Console) -> Panel:
 def contents_farewell(console: Console) -> str:
     farewell = f"""
     Thank you for taking time!
-    Feel free to contact me. 👋 
+    Feel free to contact me 👋 
 
-    >  https://github.com/optimizean
-    >  optimize.an@gmail.com
+    >  Github:  https://github.com/optimizean
+    >  Email:   optimize.an@gmail.com
     
     """
     console.print(farewell)
     return farewell
+
+
+def ask_next() -> str:
+    query = f"""[{color_sub}]🔒 New Feature is Released! Why don't you try? [/]\n It won't install any other package."""
+    choice = Prompt.ask(
+        query,
+        choices=["y", "n"],
+        default="y",
+    )
+    return choice
 
 
 def display_contents(console: Console, local_greeting_message: str) -> Panel:
@@ -133,14 +143,17 @@ def display_contents(console: Console, local_greeting_message: str) -> Panel:
 def display_process(console: Console) -> None:
 
     while True:
-        choice = Prompt.ask(
-            f"[{color_emp}]🔒 New Feature is Released! Why don't you try? [/]",
-            choices=["y", "n"],
-            default="y",
-        )
+        choice = ask_next()
         if choice == "y":
             code_contents(console)
 
         contents_farewell(console)
 
         sys.exit()
+
+
+if __name__ == "__main__":
+    color_main, color_sub, color_emp = custom_color()  # color
+
+    console = Console
+    display_process()

@@ -9,7 +9,7 @@ from rich.syntax import Syntax
 from rich.table import Table
 from rich.align import Align
 
-from optimizean.utils import custom_color
+from optimizean.utils import custom_color, clear_screen
 from optimizean.contents import contents
 
 color_main, color_sub, color_emp = custom_color()  # color
@@ -82,6 +82,7 @@ def display_rich_contents(customize_location: bool) -> None:
     console = Console()
     contents_dict: dict = contents(customize_location)
 
+    clear_screen()
     introduce_text: Text = rich_introduce(content=contents_dict.get("introduce"))
     contact_table: Table = rich_contact(contents=contents_dict.get("contact"))
     display_contents(console, introduce_text, contact_table)
@@ -89,6 +90,7 @@ def display_rich_contents(customize_location: bool) -> None:
     while True:
         choice = rich_proceed(contents_dict.get("proceed"))
         if choice == "y":
+            clear_screen()
             console.print(rich_code(contents_dict.get("code")))
 
         console.print(rich_farewell(contents_dict.get("farewell")))

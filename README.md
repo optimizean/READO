@@ -9,7 +9,7 @@
 </div>
 
 <div align="center">
- <a href="https://github.com/optimizean/profile-readme-package/actions/workflow/status/optimizean/profile-readme-package/python-package.yml?branch=main">
+ <a href="https://github.com/optimizean/profile-readme-package/actions/workflows/python-package.yml">
     <img src="https://img.shields.io/github/actions/workflow/status/optimizean/profile-readme-package/python-package.yml?branch=main&label=actions&style=flat-square" alt="workflow" style="height: 20px;">
   </a>
   <a href="https://github.com/optimizean/profile-readme-package/graphs/contributors">
@@ -29,7 +29,9 @@
 
 ## 🔬 What is this? 
 
-Two lines are sufficient to express us! This Python package provides personal details just like the GitHub profile README. What you need is Python 3.8 and your own terminal. This package is build with 95% Python, only because I am born to be a python developer. `Minimized dependencies to 1~2` to keep clean environment, except rich which can colorize terminal. 
+Two lines are sufficient to express us! This Python package provides personal details just like the GitHub profile README. What you need is Python 3.8 and your own terminal. This package is build with 95% Python, only because I am born to be a python developer. Minimized dependencies to 1 to keep the environment clean, except for 'rich' which can colorize the terminal.
+
+
 
 
 ## ❓ Why is it needed? 

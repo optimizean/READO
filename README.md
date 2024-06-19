@@ -56,7 +56,7 @@ optimizean
 pip uninstall optimizean    # after you use it.
 ```
 
-![v111-1](https://github.com/optimizean/profile-readme-package/assets/172540472/802ec573-b7e7-4379-b76e-be216199e8e8)
+![v112](https://github.com/optimizean/profile-readme-package/assets/172540472/74a5a7c7-adeb-4b6d-93b6-11ba1462fb30)
 
 ### Authorizing Step
 > Only for fancy, But realtime update. How many visitors do you have?<br/>

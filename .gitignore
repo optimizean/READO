@@ -1,6 +1,8 @@
 .tox/
 build/
 dist/
+ignore/
+
 *info/
 *cache*/
 

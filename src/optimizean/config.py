@@ -1,15 +1,22 @@
 import os
 import sys
-from importlib.metadata import metadata  # >= 3.8
+from importlib.metadata import (
+    metadata,
+    version,
+    requires,
+)  # >= 3.8
 from dataclasses import dataclass, field, fields
 
 
+# -- Load Metadata -- #
 def get_metadata(package_name="optimizean"):
     meta = metadata(package_name)
     return meta
 
 
 meta = get_metadata()
+
+# -- Metadata Dataclass -- #
 
 
 @dataclass
@@ -21,12 +28,10 @@ class UserConfig:
 
 @dataclass
 class ProjectConfig:
-    name: str = meta["name"]
-    version: str = meta["version"]
-    # description: str = meta["description"]
-    # authors: list = meta["authors"]
-    license: str = meta["license"]
-    dependencies: list = meta["dependencies"]
+    name: str = meta.get("name", "unknown")
+    version: str = meta.get("version", version("optimizean"))
+    license: str = meta.get("license", "unknown")
+    dependencies: list = field(default_factory=lambda: requires("optimizean"))
 
 
 @dataclass
@@ -36,11 +41,19 @@ class StyleConfig:
     emp: str = "magenta"
 
 
+class AuthorConfig:
+    name: str = "optimizean"
+    github: str = "https://github.com/optimizean"
+    blog: str = "https://optimizean.github.io/an/"
+    email: str = "optimize.an@gmail.com"
+
+
 @dataclass
 class Parameters:
     user: UserConfig = field(default_factory=UserConfig)
     project: ProjectConfig = field(default_factory=ProjectConfig)
     style: StyleConfig = field(default_factory=StyleConfig)
+    author: AuthorConfig = field(default_factory=AuthorConfig)
 
     def to_dict(self):
         return self.__dict__
@@ -52,10 +65,10 @@ class Parameters:
 
 
 def main():
-    params = Parameters()
-    return params
+    config = Parameters()
+    return config
 
 
 if __name__ == "__main__":
-    params = main()
-    print(params.__repr__)
+    config = main()
+    print(config.__repr__)

@@ -3,8 +3,6 @@ import requests
 import warnings
 from typing import Optional, Tuple
 
-warnings.filterwarnings(action="ignore")
-
 
 def get_localtime() -> str:
     current_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
@@ -22,10 +20,10 @@ def get_localtime() -> str:
         raise ValueError("Wrong Time")
 
 
-def get_location() -> Tuple[str, str]:
+def get_location() -> dict:
     response = requests.get("http://ip-api.com/json/")
     data = response.json()
-    return data.get("country"), data.get("countryCode")
+    return data
 
 
 def get_local_greeting(localtime: str, country_code: str) -> str:
@@ -89,6 +87,18 @@ def get_local_greeting(localtime: str, country_code: str) -> str:
     }
 
     return greetings_dict.get(localtime, {}).get(country_code, "Hello")
+
+
+def local_greeting(customize_location) -> str:
+
+    if customize_location:
+        localtime: str = get_localtime()
+        country_code: str = get_location().get("countryCode")
+    else:
+        localtime: None = None
+        country_code: None = None
+
+    return get_local_greeting(localtime, country_code)
 
 
 if __name__ == "__main__":

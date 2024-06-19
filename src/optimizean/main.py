@@ -8,7 +8,7 @@ from optimizean.userid import sum_downloads_in_180
 from optimizean.utils import clear_screen, typing_effect
 
 from optimizean.localization import get_local_greeting
-from optimizean.contents import display_contents, display_process
+from optimizean.display import display_rich_contents
 
 
 def load_userid() -> int:
@@ -46,11 +46,9 @@ def main():
     clear(veritifying_process, console, user_id, PAUSE=1.3)
 
     # 2. The main contents
-    local_greeting_message: str = get_local_greeting(
-        localtime="morning", country_code="US"
-    )
-    display_contents(console, local_greeting_message)
-    display_process(console)
+    # manually change local settings
+    customize_location: bool = False
+    display_rich_contents(customize_location=customize_location)
 
 
 if __name__ == "__main__":

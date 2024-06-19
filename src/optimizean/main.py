@@ -47,7 +47,7 @@ def main():
 
     # 2. The main contents
     # manually change local settings
-    customize_location: bool = False
+    customize_location: bool = True
     display_rich_contents(customize_location=customize_location)
 
 
